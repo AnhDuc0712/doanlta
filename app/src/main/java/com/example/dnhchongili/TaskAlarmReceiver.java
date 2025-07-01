@@ -10,10 +10,13 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.dnhchongili.R;
 
+import android.util.Log;
+
 public class TaskAlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String taskTitle = intent.getStringExtra("taskTitle");
+        Log.d("TaskAlarmReceiver", "🔔 Báo thức kích hoạt! Task: " + taskTitle);
 
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         String channelId = "task_alarm_channel";
@@ -24,8 +27,7 @@ public class TaskAlarmReceiver extends BroadcastReceiver {
         }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(android.R.drawable.ic_dialog_info)  // hoặc ic_popup_reminder
-                // sửa lại icon cho phù hợp app của đại ca
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
                 .setContentTitle("⏰ Nhắc nhở công việc")
                 .setContentText(taskTitle)
                 .setAutoCancel(true)

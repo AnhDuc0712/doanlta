@@ -12,11 +12,11 @@ import java.util.Locale;
 
 import model.Task;
 
-public class TaskAlarmUtils {
+import android.util.Log;
 
+public class TaskAlarmUtils {
     public static void setTaskAlarm(Context context, Task task, int taskId) {
         try {
-            // Convert long date + time string ("HH:mm") => millis
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(task.date);
 
@@ -29,22 +29,32 @@ public class TaskAlarmUtils {
             calendar.set(Calendar.SECOND, 0);
 
             long triggerTime = calendar.getTimeInMillis();
-            if (triggerTime < System.currentTimeMillis()) return;
+
+            Log.d("TaskAlarmUtils", "⏰ Task: " + task.title);
+            Log.d("TaskAlarmUtils", "TriggerTime: " + triggerTime);
+            Log.d("TaskAlarmUtils", "CurrentTime: " + System.currentTimeMillis());
+
+            if (triggerTime < System.currentTimeMillis()) {
+                Log.w("TaskAlarmUtils", "⛔ Không đặt báo thức vì thời gian đã trôi qua.");
+                return;
+            }
 
             Intent intent = new Intent(context, TaskAlarmReceiver.class);
             intent.putExtra("taskTitle", task.title);
 
             PendingIntent pendingIntent = PendingIntent.getBroadcast(
                     context,
-                    taskId, // mỗi task là 1 ID riêng
+                    taskId,
                     intent,
                     PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
             );
 
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
+
+            Log.d("TaskAlarmUtils", "✅ Đã đặt báo thức cho task: " + task.title);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("TaskAlarmUtils", "❌ Lỗi khi đặt báo thức", e);
         }
     }
 }
