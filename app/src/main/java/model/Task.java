@@ -1,8 +1,8 @@
 package model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.annotation.NonNull;
 
 /**
  * Lớp đại diện cho một công việc (task) cá nhân hoặc nhóm.
@@ -17,28 +17,25 @@ public class Task {
     public String title;
 
     public String description;
+    public long date;               // timestamp đại diện cho ngày
+    public String time;             // thời gian cụ thể trong ngày
+    public boolean isDone;          // trạng thái hoàn thành
+    public boolean isGroupTask;     // true nếu là task nhóm
+    public String groupId;          // ID nhóm (nullable)
+    public int priorityLevel;       // mức độ ưu tiên (1-4)
 
-    // Ngày thực hiện công việc, lưu dạng timestamp (milliseconds)
-    public long date;
+    // ✅ Constructor đầy đủ – Room cần để khởi tạo đối tượng
+    public Task(@NonNull String title, String description, String time, boolean isGroupTask, int priorityLevel, long date) {
+        this.title = title;
+        this.description = description;
+        this.time = time;
+        this.isGroupTask = isGroupTask;
+        this.priorityLevel = priorityLevel;
+        this.date = date;
+        this.isDone = false;
+        this.groupId = null;
+    }
 
-    // Thời gian cụ thể trong ngày (ví dụ: "08:30", "15:00")
-    public String time;
-
-    // Trạng thái hoàn thành: true nếu đã làm xong
-    public boolean isDone;
-
-    // Là công việc nhóm hay cá nhân
-    public boolean isGroupTask;
-
-    // Nếu là task nhóm → lưu ID nhóm (nếu không, có thể để null)
-    public String groupId;
-
-    // Mức độ ưu tiên (1-4) tương ứng với ma trận Eisenhower
-    /*
-        1 = Khẩn cấp và Quan trọng
-        2 = Không gấp nhưng Quan trọng
-        3 = Khẩn cấp nhưng không Quan trọng
-        4 = Không khẩn cấp và không Quan trọng
-    */
-    public int priorityLevel;
+    // ✅ Constructor rỗng – cần cho Room
+    public Task() {}
 }
