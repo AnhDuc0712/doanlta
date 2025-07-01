@@ -1,44 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="16dp"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/edtTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tiêu đề công việc" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edtDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mô tả (tuỳ chọn)" />
+        <EditText
+            android:id="@+id/edtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tiêu đề"
+            android:inputType="textCapSentences"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp"/>
 
-    <EditText
-        android:id="@+id/edtTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Giờ (vd: 08:00)" />
+        <EditText
+            android:id="@+id/edtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mô tả"
+            android:inputType="textMultiLine"
+            android:minLines="2"
+            android:maxLines="4"
+            android:padding="10dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp"/>
 
-    <CheckBox
-        android:id="@+id/checkGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đây là công việc nhóm" />
+        <EditText
+            android:id="@+id/edtTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Chọn giờ"
+            android:focusable="false"
+            android:clickable="true"
+            android:drawableEnd="@android:drawable/ic_menu_recent_history"
+            android:padding="10dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="12dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mức độ ưu tiên"
-        android:layout_marginTop="12dp"
-        android:textStyle="bold"/>
+        <Spinner
+            android:id="@+id/spinnerPriority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"/>
 
-    <Spinner
-        android:id="@+id/spinnerPriority"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <CheckBox
+            android:id="@+id/checkGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đây là việc nhóm?"
+            android:layout_marginBottom="12dp"/>
 
-</LinearLayout>
+        <!-- 🆕 Mã nhóm -->
+        <EditText
+            android:id="@+id/edtGroupId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập mã nhóm (nếu có)"
+            android:visibility="gone"
+            android:padding="10dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm công việc"/>
+
+    </LinearLayout>
+</ScrollView>
