@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -33,6 +34,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     private List<Task> taskList;
     private int priorityLevelFixed; // ✅ để giữ task trong đúng ma trận
 
+    public TaskAdapter() {
+        this.taskList = new ArrayList<>();
+    }
     public TaskAdapter(Context context, List<Task> taskList, int priorityLevelFixed) {
         this.context = context;
         this.taskList = taskList;
