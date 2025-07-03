@@ -24,7 +24,7 @@ public class Task {
     public String groupId;          // ID nhóm (nullable)
     public int priorityLevel;       // mức độ ưu tiên (1-4)
 
-    // ✅ Constructor đầy đủ – Room cần để khởi tạo đối tượng
+    //  Constructor đầy đủ – Room cần để khởi tạo đối tượng
     public Task(@NonNull String title, String description, String time, boolean isGroupTask, int priorityLevel, long date) {
         this.title = title;
         this.description = description;
@@ -36,6 +36,6 @@ public class Task {
         this.groupId = null;
     }
 
-    // ✅ Constructor rỗng – cần cho Room
+    // Constructor rỗng – cần cho Room
     public Task() {}
 }

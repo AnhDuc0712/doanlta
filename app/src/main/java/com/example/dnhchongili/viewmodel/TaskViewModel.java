@@ -1,10 +1,9 @@
-package com.example.dnhchongili;
+package com.example.dnhchongili.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import data.AppDatabase;
