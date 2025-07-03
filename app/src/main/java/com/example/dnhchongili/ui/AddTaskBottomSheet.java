@@ -88,10 +88,11 @@ public class AddTaskBottomSheet extends BottomSheetDialogFragment {
             String groupId = edtGroupId.getText().toString().trim();
             int priorityLevel = spinnerPriority.getSelectedItemPosition() + 1;
 
-            if (TextUtils.isEmpty(title) || TextUtils.isEmpty(time)) {
-                Toast.makeText(getContext(), "Vui lòng nhập tiêu đề và giờ", Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(title)) {
+                Toast.makeText(getContext(), "Vui lòng nhập tiêu đề", Toast.LENGTH_SHORT).show();
                 return;
             }
+
 
             Task task = new Task(title, description, time, isGroup, priorityLevel, selectedDate);
             task.groupId = isGroup ? (groupId.isEmpty() ? "G1" : groupId) : null;
