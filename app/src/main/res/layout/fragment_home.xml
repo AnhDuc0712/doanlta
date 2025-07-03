@@ -11,11 +11,11 @@
         android:id="@+id/tvSummary"
         android:layout_width="match_parent"
         android:layout_height="87dp"
-        android:paddingTop="30dp"
-        android:paddingBottom="12dp"
+        android:paddingTop="22dp"
+        android:paddingBottom="10dp"
         android:text="Hôm nay: 0 / 0 công việc đã hoàn thành"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <!-- Danh sách công việc -->
