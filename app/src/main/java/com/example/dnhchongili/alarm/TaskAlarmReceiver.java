@@ -1,4 +1,4 @@
-package com.example.dnhchongili;
+package com.example.dnhchongili.alarm;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
-
-import com.example.dnhchongili.R;
 
 public class TaskAlarmReceiver extends BroadcastReceiver {
     @Override

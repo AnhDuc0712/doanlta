@@ -1,4 +1,4 @@
-package com.example.dnhchongili;
+package com.example.dnhchongili.matrix;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dnhchongili.R;
+import com.example.dnhchongili.ui.TaskAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;

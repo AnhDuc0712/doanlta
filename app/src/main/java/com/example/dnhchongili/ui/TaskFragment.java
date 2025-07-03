@@ -1,4 +1,4 @@
-package com.example.dnhchongili;
+package com.example.dnhchongili.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,13 +13,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dnhchongili.R;
+import com.example.dnhchongili.viewmodel.TaskViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
 import java.util.List;
-
-import data.AppDatabase;
-import model.Task;
 
 public class TaskFragment extends Fragment {
 

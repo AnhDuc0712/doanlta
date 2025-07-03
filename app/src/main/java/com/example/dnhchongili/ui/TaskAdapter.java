@@ -1,4 +1,4 @@
-package com.example.dnhchongili;
+package com.example.dnhchongili.ui;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -17,11 +17,11 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dnhchongili.R;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.Executors;
 
@@ -118,9 +118,27 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 if (item.getItemId() == R.id.menu_edit) {
                     showEditDialog(task);
                     return true;
+                } else if (item.getItemId() == R.id.menu_delete) {
+                    new android.app.AlertDialog.Builder(context)
+                            .setTitle("Xác nhận xoá")
+                            .setMessage("Bạn có chắc muốn xoá công việc này?")
+                            .setPositiveButton("Xoá", (dialog, which) -> {
+                                Executors.newSingleThreadExecutor().execute(() -> {
+                                    AppDatabase.getInstance(context).taskDao().delete(task);
+                                    ((android.app.Activity) context).runOnUiThread(() -> {
+                                        taskList.remove(holder.getAdapterPosition());
+                                        notifyItemRemoved(holder.getAdapterPosition());
+                                        Toast.makeText(context, "Đã xoá task!", Toast.LENGTH_SHORT).show();
+                                    });
+                                });
+                            })
+                            .setNegativeButton("Hủy", null)
+                            .show();
+                    return true;
                 }
                 return false;
             });
+
             popup.show();
         });
     }

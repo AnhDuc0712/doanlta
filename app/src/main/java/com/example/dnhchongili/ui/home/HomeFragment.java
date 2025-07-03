@@ -1,4 +1,4 @@
-package com.example.dnhchongili;
+package com.example.dnhchongili.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dnhchongili.R;
+import com.example.dnhchongili.ui.TaskAdapter;
+import com.example.dnhchongili.viewmodel.TaskViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
 import model.Task;
@@ -18,9 +22,9 @@ import model.Task;
 public class HomeFragment extends Fragment {
 
     private RecyclerView rvTodayTasks;
-    private com.example.dnhchongili.TaskAdapter taskAdapter;
+    private TaskAdapter taskAdapter;
     private TextView tvSummary;
-    private com.example.dnhchongili.TaskViewModel taskViewModel;
+    private TaskViewModel taskViewModel;
 
     public HomeFragment() {
         // Bắt buộc phải có constructor rỗng

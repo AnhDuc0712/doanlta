@@ -1,14 +1,11 @@
-package com.example.dnhchongili;
+package com.example.dnhchongili.alarm;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 import model.Task;
 
@@ -42,7 +39,10 @@ public class TaskAlarmUtils {
             );
 
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
+
+            // ✅ Dùng setExactAndAllowWhileIdle để báo thức hoạt động đúng giờ dù thiết bị đang ở Doze Mode
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
