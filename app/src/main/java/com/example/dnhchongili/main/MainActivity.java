@@ -1,6 +1,7 @@
 package com.example.dnhchongili.main;
 
 import android.Manifest;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,7 +25,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
+        boolean isLoggedIn = prefs.contains("token"); // Kiểm tra token thay vì user_id
 
+        if (!isLoggedIn) {
+            // Hiển thị AccountFragment để đăng nhập/đăng ký
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new AccountFragment())
+                    .commit();
+        } else {
+            // Hiển thị giao diện chính như bình thường
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new HomeFragment())
+                    .commit();
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
