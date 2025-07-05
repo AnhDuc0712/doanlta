@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Dành cho người lười</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="btn_add_task">Thêm công việc</string>
+
+    <string-array name="priority_levels">
+        <item>Khẩn cấp và Quan trọng</item>
+        <item>Không gấp nhưng Quan trọng</item>
+        <item>Khẩn cấp nhưng không Quan trọng</item>
+        <item>Không gấp và không Quan trọng</item>
+    </string-array>
+
+</resources>
