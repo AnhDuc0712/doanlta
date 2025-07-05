@@ -45,12 +45,20 @@ dependencies {
 
     implementation("com.google.android.material:material:1.11.0")
 
+    // Retrofit and Gson
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    // AndroidX core libs
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.activity)
-    implementation(libs.constraintlayout)
+    // EncryptedSharedPreferences
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+
+    // AndroidX UI
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // Kotlin (nếu dùng)
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.0")
 
     // Test
     testImplementation(libs.junit)
