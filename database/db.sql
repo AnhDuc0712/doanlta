@@ -1,0 +1,26 @@
+-- Tạo cơ sở dữ liệu
+CREATE DATABASE IF NOT EXISTS dalta;
+USE dalta;
+
+-- Bảng Users
+CREATE TABLE IF NOT EXISTS Users (
+    UserId INT AUTO_INCREMENT PRIMARY KEY,
+    FullName VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Password VARCHAR(100) NOT NULL,
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Role VARCHAR(20) DEFAULT 'User'
+);
+
+-- Bảng Tasks
+CREATE TABLE IF NOT EXISTS Tasks (
+    TaskId INT AUTO_INCREMENT PRIMARY KEY,
+    UserId INT,
+    Title VARCHAR(200) NOT NULL,
+    Description TEXT,
+    Date DATE NOT NULL,
+    Time TIME,
+    IsDone BIT DEFAULT 0,
+    PriorityLevel INT DEFAULT 1,
+    FOREIGN KEY (UserId) REFERENCES Users(UserId)
+);
